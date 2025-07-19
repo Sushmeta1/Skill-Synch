@@ -1,0 +1,27 @@
+# Core Flask Dependencies
+Flask==2.3.3
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+
+# File Processing
+PyPDF2==3.0.1
+python-docx==0.8.11
+docx2txt==0.8
+
+# AI and ML
+google-generativeai==0.3.0
+python-dotenv==1.0.0
+
+# Audio Processing
+SpeechRecognition==3.10.0
+pydub==0.25.1
+textblob==0.17.1
+numpy<2
+
+# Video Processing Dependencies
+moviepy==1.0.3
+opencv-python==4.8.1.78
+ffmpeg-python==0.2.0
+
+# Optional Advanced Features
+librosa==0.10.1

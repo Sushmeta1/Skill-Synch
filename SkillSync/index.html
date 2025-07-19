@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillSynch - Resume & Interview Analysis</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="container flex justify-between items-center">
+        <div class="logo">
+          <h1>SkillSynch</h1>
+          <p>Professional Resume & Interview Analysis</p>
+        </div>
+        <nav class="nav-tabs">
+          <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+          <button class="nav-tab" data-tab="resume">Resume Analyzer</button>
+          <button class="nav-tab" data-tab="interview">Interview Analysis</button>
+          <button class="nav-tab" data-tab="results">Results</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="tab-content active" id="dashboard">
+      <div class="container">
+        <div class="dashboard-hero">
+          <h2>Welcome to SkillSynch</h2>
+          <p>Analyze resumes and interview performance with AI-powered insights</p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="card dashboard-card" data-action="resume">
+            <div class="card__body">
+              <div class="card-icon">📄</div>
+              <h3>Resume Analyzer</h3>
+              <p>Upload your resume and job description</p>
+              <button class="btn btn--primary">Start Analysis</button>
+            </div>
+          </div>
+
+          <div class="card dashboard-card" data-action="interview">
+            <div class="card__body">
+              <div class="card-icon">🎥</div>
+              <h3>Interview Analysis</h3>
+              <p>Upload recordings to get insights</p>
+              <button class="btn btn--primary">Analyze Interview</button>
+            </div>
+          </div>
+
+          <div class="card dashboard-card" data-action="results">
+            <div class="card__body">
+              <div class="card-icon">📊</div>
+              <h3>View Results</h3>
+              <p>See your past reports and trends</p>
+              <button class="btn btn--outline">View Results</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume Analyzer -->
+    <div class="tab-content" id="resume">
+      <div class="container">
+        <h2>Resume Analysis</h2>
+        <div class="analysis-grid">
+          <div class="upload-section">
+            <div class="card">
+              <div class="card__body">
+                <h3>Upload Resume</h3>
+                <div class="file-upload-area" id="resume-upload">
+                  <div class="upload-icon">📁</div>
+                  <p>Drag and drop your resume here or click to browse</p>
+                  <input type="file" id="resume-file" accept=".pdf,.doc,.docx" hidden />
+                  <button class="btn btn--secondary">Choose File</button>
+                </div>
+                <div class="file-info hidden" id="resume-file-info">
+                  <span class="file-name"></span>
+                  <button class="btn btn--sm btn--outline remove-file">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__body">
+                <h3>Job Description</h3>
+                <textarea class="form-control" id="job-description" rows="8" placeholder="Paste job description here...">We are looking for a Full Stack Developer with experience in JavaScript, React, Node.js, Docker, and AWS.</textarea>
+                
+                <div class="user-level-selector">
+                  <label for="user-level">Your Experience Level:</label>
+                  <select id="user-level" class="form-control">
+                    <option value="Beginner">Beginner (0-2 years)</option>
+                    <option value="Intermediate" selected>Intermediate (2-5 years)</option>
+                    <option value="Advanced">Advanced (5+ years)</option>
+                  </select>
+                </div>
+                
+                <button class="btn btn--primary btn--full-width mt-8" id="analyze-resume">Analyze Resume</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-section">
+            <div class="card">
+              <div class="card__body">
+                <h3>Analysis Progress</h3>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="analysis-progress"></div>
+                </div>
+                <p class="progress-text" id="progress-text">Ready to analyze</p>
+              </div>
+            </div>
+
+            <div class="card analysis-results hidden" id="resume-results">
+              <div class="card__body">
+                <h3>Analysis Results</h3>
+                <div class="score-display">
+                  <div class="score-circle">
+                    <span class="score-value" id="similarity-score">0</span>
+                    <span class="score-label">% Match</span>
+                  </div>
+                </div>
+
+                <div class="skills-analysis">
+                  <div class="skill-section">
+                    <h4>Matched Skills</h4>
+                    <div class="skills-list" id="matched-skills"></div>
+                  </div>
+
+                  <div class="skill-section">
+                    <h4>Missing Skills</h4>
+                    <div class="skills-list missing" id="missing-skills"></div>
+                  </div>
+                </div>
+
+                <div class="improvement-section">
+                  <h4>Improvement Suggestions</h4>
+                  <ul id="improvement-suggestions"></ul>
+                </div>
+
+                <button class="btn btn--outline btn--full-width" id="download-report">Download Report</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview -->
+    <div class="tab-content" id="interview">
+      <div class="container">
+        <h2>Interview Analysis</h2>
+        <div class="analysis-grid">
+          <div class="upload-section">
+            <div class="card">
+              <div class="card__body">
+                <h3>Upload Interview Recording or Video</h3>
+                <div class="file-upload-area" id="interview-upload">
+                  <div class="upload-icon">🎬</div>
+                  <p>Drag and drop your audio/video file here or click to browse</p>
+                  <input type="file" id="interview-file" accept=".mp3,.wav,.m4a,.mp4,.avi,.mov,.mkv,.webm" hidden />
+                  <button class="btn btn--secondary">Choose File</button>
+                </div>
+                <div class="file-info hidden" id="interview-file-info">
+                  <span class="file-name"></span>
+                  <span class="file-type-badge"></span>
+                  <button class="btn btn--sm btn--outline remove-file">Remove</button>
+                </div>
+                <div class="supported-formats">
+                  <p><strong>Supported formats:</strong></p>
+                  <p>📹 Video: MP4, AVI, MOV, MKV, WebM</p>
+                  <p>🎵 Audio: MP3, WAV, M4A</p>
+                </div>
+                <button class="btn btn--primary btn--full-width mt-8" id="analyze-interview">Analyze Interview</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="results-section">
+            <div class="card">
+              <div class="card__body">
+                <h3>Analysis Progress</h3>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="interview-progress"></div>
+                </div>
+                <p class="progress-text" id="interview-progress-text">Ready to analyze</p>
+              </div>
+            </div>
+
+            <div class="card analysis-results hidden" id="interview-results">
+              <div class="card__body">
+                <h3>Interview Results</h3>
+
+                <div class="metrics">
+                  <p><strong>Confidence:</strong> <span id="confidence-score">0%</span></p>
+                  <p><strong>Clarity:</strong> <span id="clarity-score">0%</span></p>
+                  <p><strong>Hesitation Rate:</strong> <span id="hesitation-rate">0%</span></p>
+                </div>
+
+                <h4>Emotion Breakdown</h4>
+                <ul id="emotion-breakdown"></ul>
+
+                <h4>Feedback</h4>
+                <ul id="interview-feedback"></ul>
+                
+                <button class="btn btn--outline btn--full-width mt-8" id="download-interview-report">Download Interview Report</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="tab-content" id="results">
+      <div class="container">
+        <h2>Analytics Dashboard</h2>
+        <!-- Add charts or past data here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal hidden" id="loading-modal">
+    <div class="modal-content">
+      <div class="loading-spinner"></div>
+      <h3>Processing Analysis...</h3>
+      <p>Please wait while we analyze your data</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
