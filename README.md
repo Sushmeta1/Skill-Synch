@@ -99,7 +99,7 @@
    GEMINI_API_KEY=your_api_key_here
    ```
    
-   **Note**: SkillSync works perfectly without the API key in demo mode!
+   **Note**: SkillSynch works perfectly without the API key in demo mode!
 
 4. **Start the Backend Server**
    ```bash
@@ -109,7 +109,7 @@
 
 5. **Launch Frontend**
    ```bash
-   cd ../SkillSync
+   cd ../SkillSynch
    # Open index.html in your browser or use a local server
    python -m http.server 8000  # Optional: Use Python's built-in server
    ```
