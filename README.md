@@ -1,6 +1,6 @@
-# 🚀 SkillSync - Professional Resume & Interview Analysis Platform
+# 🚀 SkillSynch - Professional Resume & Interview Analysis Platform
 
-**SkillSync** is a comprehensive AI-powered career development platform that provides intelligent resume analysis, interview performance evaluation, and personalized learning recommendations. Built for hackathons and professional development, it combines modern web technologies with advanced analytics to help users improve their career prospects.
+**SkillSynch** is a comprehensive AI-powered career development platform that provides intelligent resume analysis, interview performance evaluation, and personalized learning recommendations. Built for hackathons and professional development, it combines modern web technologies with advanced analytics to help users improve their career prospects.
 
 ## ✨ Features
 
@@ -207,7 +207,7 @@ Hackathon/
 
 ## 🎨 Design System
 
-SkillSync implements a professional design system with:
+SkillSynch implements a professional design system with:
 - **Color Palette**: Teal primary (#21808D), warm secondary tones
 - **Typography**: Clean, readable fonts with proper hierarchy
 - **Components**: Consistent cards, buttons, and form elements
@@ -290,4 +290,4 @@ For questions, issues, or feature requests:
 
 **Built with ❤️ for the developer community**
 
-*SkillSync - Bridging the gap between skills and success* 🌟 
+*SkillSynch - Bridging the gap between skills and success* 🌟 
